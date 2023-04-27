@@ -3,8 +3,10 @@ const { UserRouter } = require("./routes/user.route")
 const { connect } = require("./config/db")
 const { authentication } = require("./middleware/auth.middleware")
 const { ProfileRoutes } = require("./routes/profile.route")
+const cors=require("cors")
 
 const app=express()
+app.use(cors())
 
 app.get('/',(ask,give)=>{
     give.send("Authentication App")
