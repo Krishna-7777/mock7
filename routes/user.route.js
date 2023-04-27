@@ -30,7 +30,7 @@ UserRouter.post('/login',async(ask,give)=>{
          let user=await UserModel.find({email});
          if(user.length){
             let hash=user[0].password
-        const res=bcrypt.compare(password,hash);
+        const res=await bcrypt.compare(password,hash);
         if(res){
             let token=await jwt.sign({id:user[0]._id},process.env.secret)
             give.send({msg:"Login Succesfull!",token})
